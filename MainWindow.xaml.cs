@@ -20,7 +20,7 @@ namespace Lab1
             Order order = (Order)OrderGrid.SelectedItem;
             InputTextBox1.Text = order.Id.ToString();
             InputTextBox2.Text = order.CustomerName;
-            InputTextBox3.Text = order.PizzaSize;
+            ComboBox2.Text = order.PizzaSize;
             ComboBox1.Text = order.CustomerSex;
             InputTextBox4.Text = order.Price.ToString();
             AddButton.IsEnabled = false;
@@ -48,7 +48,7 @@ namespace Lab1
         {
             Order order = new Order();
             order.CustomerName = InputTextBox2.Text;
-            order.PizzaSize = InputTextBox3.Text;
+            order.PizzaSize = ComboBox2.Text;
             order.CustomerSex = ComboBox1.Text;
             order.Price = Convert.ToInt32(InputTextBox4.Text);
             OrderRepository.GetInstance().Save(order);
@@ -61,7 +61,7 @@ namespace Lab1
             Order order = new Order();
             order.Id = Convert.ToInt64(InputTextBox1.Text);
             order.CustomerName = InputTextBox2.Text;
-            order.PizzaSize = InputTextBox3.Text;
+            order.PizzaSize = ComboBox2.Text;
             order.CustomerSex = ComboBox1.Text;
             order.Price = Convert.ToInt32(InputTextBox4.Text);
             OrderRepository.GetInstance().Update(order);
@@ -85,7 +85,7 @@ namespace Lab1
         {
             InputTextBox1.Text = "";
             InputTextBox2.Text = "";
-            InputTextBox3.Text = "";
+            ComboBox2.Text = "";
             ComboBox1.Text = "";
             InputTextBox4.Text = "";
         }

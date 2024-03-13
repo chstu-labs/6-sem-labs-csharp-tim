@@ -22,7 +22,11 @@
                 <Label Content="Customer Name" Height="28" HorizontalAlignment="Left" Name="Label2" VerticalAlignment="Top" />
                 <TextBox MinWidth="300" HorizontalAlignment="Center" VerticalAlignment="Center" Name="InputTextBox2"/>
                 <Label Content="Pizza Size" Height="28" HorizontalAlignment="Left" Name="Label3" VerticalAlignment="Top" />
-                <TextBox MinWidth="300" HorizontalAlignment="Center" VerticalAlignment="Center" Name="InputTextBox3"/>
+                <ComboBox MinWidth="300" HorizontalAlignment="Center" VerticalAlignment="Center" Name="ComboBox2">
+                    <ComboBoxItem>M</ComboBoxItem>
+                    <ComboBoxItem>X</ComboBoxItem>
+                    <ComboBoxItem>XL</ComboBoxItem>
+                </ComboBox>
                 <Label Content="Customer Sex" Height="28" HorizontalAlignment="Left" Name="Label4" VerticalAlignment="Top" />
                 <ComboBox MinWidth="300" HorizontalAlignment="Center" VerticalAlignment="Center" Name="ComboBox1">
                     <ComboBoxItem>M</ComboBoxItem>
