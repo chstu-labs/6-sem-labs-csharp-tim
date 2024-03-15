@@ -1,0 +1,91 @@
+﻿<Window x:Class="Lab1.MainWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:local="clr-namespace:Lab1"
+ mc:Ignorable="d"
+ Title="Pizzeria" Height="450" Width="800">
+ <Grid>
+ <Grid.ColumnDefinitions>
+ <ColumnDefinition />
+ <ColumnDefinition />
+ </Grid.ColumnDefinitions>
+ <Grid Grid.Column="0">
+ <Grid.RowDefinitions>
+ <RowDefinition Height="auto"></RowDefinition>
+ <RowDefinition></RowDefinition>
+ </Grid.RowDefinitions>
+ <Label Grid.Row="0" Content="Waiter list" Height="28"
+ HorizontalAlignment="Left" Name="Label1" VerticalAlignment="Top"/>
+ <DataGrid Grid.Row="1" Name="WaiterGrid" AutoGenerateColumns="False"
+ IsReadOnly="True" Width="Auto">
+ <DataGrid.Resources>
+ <Style TargetType="DataGridCell">
+ <Style.Triggers>
+ <Trigger Property="IsSelected" Value="True">
+ <Setter Property="Background" Value="Green" />
+ </Trigger>
+ </Style.Triggers>
+ <EventSetter Event="MouseLeftButtonUp" Handler="DataGrid_Click"/>
+ </Style>
+ </DataGrid.Resources>
+ <DataGrid.ContextMenu>
+ <ContextMenu>
+ <MenuItem Header="Add waiter" Click="MenuItemAddWaiter_Click"/>
+ <MenuItem Header="Edit waiter" Click="MenuItemEditWaiter_Click"/>
+ <MenuItem Header="Delete waiter" Click="MenuItemDeleteWaiter_Click"/>
+ </ContextMenu>
+ </DataGrid.ContextMenu>
+ <DataGrid.Columns>
+ <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Width="50"/>
+ <DataGridTextColumn Header="First Name" Binding="{Binding
+ Path=FirstName}" Width="100"/>
+ <DataGridTextColumn Header="Last Name" Binding="{Binding
+ Path=LastName}" Width="100"/>
+ <DataGridTextColumn Header="Headman Name" Binding="{Binding
+ Path=HeadmanName}" Width="100"/>
+ </DataGrid.Columns>
+ </DataGrid>
+ </Grid>
+ <GridSplitter Grid.Column="0" Width="2" ShowsPreview="True"/>
+ <Grid Grid.Column="1">
+ <Grid.RowDefinitions>
+ <RowDefinition Height="auto"></RowDefinition>
+ <RowDefinition></RowDefinition>
+ </Grid.RowDefinitions>
+ <Label Grid.Row="0" Content="Order list" Height="28"
+ HorizontalAlignment="Left" Name="Label2" VerticalAlignment="Top"/>
+ <DataGrid Grid.Row="1" Name="OrderGrid" AutoGenerateColumns="False"
+ IsReadOnly="True" Width="Auto">
+ <DataGrid.Resources>
+ <Style TargetType="DataGridCell">
+ <Style.Triggers>
+ <Trigger Property="IsSelected" Value="True">
+ <Setter Property="Background" Value="Green" />
+ </Trigger>
+ </Style.Triggers>
+ </Style>
+ </DataGrid.Resources>
+ <DataGrid.ContextMenu>
+ <ContextMenu>
+ <MenuItem Header="Add order" Click="MenuItemAddOrder_Click"/>
+ <MenuItem Header="Edit order" Click="MenuItemEditOrder_Click"/>
+ <MenuItem Header="Delete order" Click="MenuItemDeleteOrder_Click"/>
+ </ContextMenu>
+ </DataGrid.ContextMenu>
+ <DataGrid.Columns>
+ <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Width="50"/>
+ <DataGridTextColumn Header="Customer Name" Binding="{Binding
+ Path=CustomerName}" Width="100"/>
+ <DataGridTextColumn Header="Pizza Size" Binding="{Binding Path=PizzaSize}"
+ Width="100"/>
+ <DataGridTextColumn Header="Customer Sex" Binding="{Binding Path=CustomerSex}"
+ Width="100"/>
+ <DataGridTextColumn Header="Price" Binding="{Binding Path=Price}"
+ Width="100"/>
+ </DataGrid.Columns>
+ </DataGrid>
+ </Grid>
+ </Grid>
+</Window>
