@@ -21,6 +21,14 @@ public class GenericDAO<T> : IGenericDAO<T>
     {
         return session.Get<T>(id);
     }
+
+    public T Merge(T item)
+    {
+        ITransaction transaction = session.BeginTransaction();
+        T resultItem = (T)session.Merge(item);
+        transaction.Commit();
+        return resultItem;
+    }
     public List<T> GetAll()
     {
         return new List<T>(session.CreateCriteria(typeof(T)).List<T>());

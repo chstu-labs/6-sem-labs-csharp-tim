@@ -2,55 +2,61 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lab4;
 
-public class OrderController : Controller
+[ApiController]
+[Route("order")]
+public class OrderController : ControllerBase
 {
-    //Обробник виводу головної сторінки
-    public IActionResult GetAll()
+    //Сервіс для виводу всіх студентів
+    [HttpGet]
+    [Consumes("application/json")]
+    [Produces("application/json")]
+    public IList<Order> GetAllOrders()
     {
-        List<Order> orderList = NHibernateDAOFactory
+        IList<Order> orders = NHibernateDAOFactory
         .getInstance().getOrderDAO().GetAll();
-        return View(orderList);
+        return orders;
     }
-    //Обробник додання студента
+    //Сервіс для додавання нового студента
     [HttpPost]
-    public IActionResult Add(
-    [Bind("CustomerName, PizzaSize, CustomerSex, Price")] Order order)
+    [Consumes("application/json")]
+    [Produces("application/json")]
+    public Order AddOrder(Order order)
     {
-        NHibernateDAOFactory.getInstance()
-        .getOrderDAO().SaveOrUpdate(order);
-        return RedirectToAction("GetAll");
+        Order resultOrder = NHibernateDAOFactory
+        .getInstance().getOrderDAO().Merge(order);
+        return resultOrder;
     }
-    //Обробник відкриття форми редагування студента
-    [Route("EditForm/{id}")]
-    public IActionResult EditForm(long id)
+    //Сервіс для редагування студента
+    [HttpPut]
+    [Consumes("application/json")]
+    [Produces("application/json")]
+    public Order UpdateOrder(Order order)
     {
+
+        Order resultOrder = NHibernateDAOFactory
+ .getInstance().getOrderDAO().Merge(order);
+        return resultOrder;
+    }
+    //Сервіс для видалення студента
+    [HttpDelete]
+    [Consumes("application/json")]
+    [Produces("application/json")]
+    [Route("{id}")]
+    public string Delete(long id)
+    {
+        string result;
         Order order = NHibernateDAOFactory
         .getInstance().getOrderDAO().GetById(id);
-        return View(order);
-    }
-    //Обробник редагування студента
-    [HttpPost]
-    public IActionResult Edit(
-    [Bind("Id, CustomerName, PizzaSize, CustomerSex, Price")] Order order)
-    {
-        Order orderToUpdate = NHibernateDAOFactory
-        .getInstance().getOrderDAO().GetById(order.Id);
-        orderToUpdate.CustomerName = order.CustomerName;
-        orderToUpdate.PizzaSize = order.PizzaSize;
-        orderToUpdate.CustomerSex = order.CustomerSex;
-        orderToUpdate.Price = order.Price;
-        NHibernateDAOFactory.getInstance()
-        .getOrderDAO().SaveOrUpdate(orderToUpdate);
-        return RedirectToAction("GetAll");
-    }
-    //Обробник видалення студента
-    [Route("Delete/{id}")]
-    public IActionResult Delete(long id)
-    {
-        Order order = NHibernateDAOFactory
-        .getInstance().getOrderDAO().GetById(id);
-        NHibernateDAOFactory.getInstance()
-        .getOrderDAO().Delete(order);
-        return RedirectToAction("GetAll");
+        if (null != order)
+        {
+            NHibernateDAOFactory.getInstance()
+            .getOrderDAO().Delete(order);
+            result = "Order was successfully removed.";
+        }
+        else
+        {
+            result = "Nothing was removed.";
+        }
+        return result;
     }
 }

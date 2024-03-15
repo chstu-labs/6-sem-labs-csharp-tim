@@ -68,6 +68,6 @@ public class NHibernateDAOFactory : DAOFactory
     }
     private static void BuildSchema(Configuration config)
     {
-        new SchemaExport(config).Create(true, true);
+        new SchemaExport(config).Create(true, false);
     }
 }
