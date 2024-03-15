@@ -13,8 +13,6 @@ public class NHibernateDAOFactory : DAOFactory
     private static ISessionFactory factory;
     private static DAOFactory instance;
     private ISession session;
-    private IGroupDAO groupDAO;
-    private IStudentDAO studentDAO;
     private IOrderDAO orderDAO;
     private IWaiterDAO waiterDAO;
     public static DAOFactory getInstance()
@@ -32,24 +30,6 @@ public class NHibernateDAOFactory : DAOFactory
     public NHibernateDAOFactory(ISession session)
     {
         this.session = session;
-    }
-
-    public override IGroupDAO getGroupDAO()
-    {
-        if (null == groupDAO)
-        {
-            groupDAO = new GroupDAO(session);
-        }
-        return groupDAO;
-    }
-
-    public override IStudentDAO getStudentDAO()
-    {
-        if (null == studentDAO)
-        {
-            studentDAO = new StudentDAO(session);
-        }
-        return studentDAO;
     }
 
     public override IOrderDAO getOrderDAO()
