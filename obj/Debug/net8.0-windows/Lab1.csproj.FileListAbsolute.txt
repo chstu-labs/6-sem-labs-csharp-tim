@@ -30,8 +30,8 @@ D:\Studying\6-sem\C#\lab1\Lab1\bin\Debug\net8.0-windows\Iesi.Collections.dll
 D:\Studying\6-sem\C#\lab1\Lab1\bin\Debug\net8.0-windows\NHibernate.dll
 D:\Studying\6-sem\C#\lab1\Lab1\bin\Debug\net8.0-windows\Remotion.Linq.dll
 D:\Studying\6-sem\C#\lab1\Lab1\bin\Debug\net8.0-windows\Remotion.Linq.EagerFetching.dll
-D:\Studying\6-sem\C#\lab1\Lab1\obj\Debug\net8.0-windows\GroupWindow.g.cs
-D:\Studying\6-sem\C#\lab1\Lab1\obj\Debug\net8.0-windows\StudentWindow.g.cs
 D:\Studying\6-sem\C#\lab1\Lab1\obj\Debug\net8.0-windows\App.baml
-D:\Studying\6-sem\C#\lab1\Lab1\obj\Debug\net8.0-windows\GroupWindow.baml
-D:\Studying\6-sem\C#\lab1\Lab1\obj\Debug\net8.0-windows\StudentWindow.baml
+D:\Studying\6-sem\C#\lab1\Lab1\obj\Debug\net8.0-windows\WaiterWindow.g.cs
+D:\Studying\6-sem\C#\lab1\Lab1\obj\Debug\net8.0-windows\OrderWindow.g.cs
+D:\Studying\6-sem\C#\lab1\Lab1\obj\Debug\net8.0-windows\OrderWindow.baml
+D:\Studying\6-sem\C#\lab1\Lab1\obj\Debug\net8.0-windows\WaiterWindow.baml

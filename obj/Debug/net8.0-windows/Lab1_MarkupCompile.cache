@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 D:\Studying\6-sem\C#\lab1\Lab1\App.xaml
-3-567296529
+3569750504
 
-271983487675
+271555614505
 207-1571527094
-GroupWindow.xaml;MainWindow.xaml;StudentWindow.xaml;
+MainWindow.xaml;OrderWindow.xaml;WaiterWindow.xaml;
 
 False
 

@@ -3,11 +3,11 @@ using System.ComponentModel;
 using System.Windows;
 namespace Lab1;
 
-public partial class GroupWindow : Window
+public partial class WaiterWindow : Window
 {
     private MainWindow parentWindow;
-    public Group Group { get; set; }
-    public GroupWindow(MainWindow parentWindow)
+    public Waiter Waiter { get; set; }
+    public WaiterWindow(MainWindow parentWindow)
     {
         this.parentWindow = parentWindow;
         this.Closing += new CancelEventHandler(Window_Closing);
@@ -17,40 +17,41 @@ public partial class GroupWindow : Window
     {
         return parentWindow;
     }
-    //Обробник натиснення на кнопку додання групи
+    //Обробник натиснення на кнопку додання офіціанта
     private void ButtonAdd_Click(object sender, EventArgs e)
     {
-        Group group = new Group();
-        group.GroupName = InputTextBox1.Text;
-        group.CuratorName = InputTextBox2.Text;
-        group.HeadmanName = InputTextBox3.Text;
+        Waiter waiter = new Waiter();
+        waiter.FirstName = InputTextBox1.Text;
+        waiter.LastName = InputTextBox2.Text;
+        waiter.HeadmanName = InputTextBox3.Text;
         getParentWindow().getDaoFactory()
-        .getGroupDAO().SaveOrUpdate(group);
-        getParentWindow().GroupGrid.ItemsSource = getParentWindow()
-        .getDaoFactory().getGroupDAO().GetAll();
+        .getWaiterDAO().SaveOrUpdate(waiter);
+        getParentWindow().WaiterGrid.ItemsSource = getParentWindow()
+        .getDaoFactory().getWaiterDAO().GetAll();
         closeWindow();
     }
-    //Обробник натиснення на кнопку редагування групи
+    //Обробник натиснення на кнопку редагування офіціанта
     private void ButtonEdit_Click(object sender, EventArgs e)
     {
-        Group group = getParentWindow()
-        .getDaoFactory().getGroupDAO().GetById(Group.Id);
-        group.GroupName = InputTextBox1.Text;
-        group.CuratorName = InputTextBox2.Text;
-        group.HeadmanName = InputTextBox3.Text;
+        Waiter waiter = getParentWindow()
+        .getDaoFactory().getWaiterDAO().GetById(Waiter.Id);
+        waiter.FirstName = InputTextBox1.Text;
+        waiter.LastName = InputTextBox2.Text;
+        waiter.HeadmanName = InputTextBox3.Text;
 
-        getParentWindow().getDaoFactory().getGroupDAO()
-        .SaveOrUpdate(group);
-        getParentWindow().GroupGrid.ItemsSource = getParentWindow()
-        .getDaoFactory().getGroupDAO().GetAll();
+        getParentWindow().getDaoFactory().getWaiterDAO()
+        .SaveOrUpdate(waiter);
+        getParentWindow().WaiterGrid.ItemsSource = getParentWindow()
+        .getDaoFactory().getWaiterDAO().GetAll();
         closeWindow();
     }
+    
     //Обробник натиснення на кнопку Cancel
     private void ButtonCancel_Click(object sender, EventArgs e)
     {
         closeWindow();
     }
-    //Обробник закриття вікна групи
+    //Обробник закриття вікна студента
     private void Window_Closing(object sender,
     System.ComponentModel.CancelEventArgs e)
     {

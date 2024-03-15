@@ -5,7 +5,7 @@
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:local="clr-namespace:Lab1"
  mc:Ignorable="d"
- Title="University" Height="450" Width="800">
+ Title="Pizzeria" Height="450" Width="800">
  <Grid>
  <Grid.ColumnDefinitions>
  <ColumnDefinition />
@@ -16,9 +16,9 @@
  <RowDefinition Height="auto"></RowDefinition>
  <RowDefinition></RowDefinition>
  </Grid.RowDefinitions>
- <Label Grid.Row="0" Content="Group list" Height="28"
+ <Label Grid.Row="0" Content="Waiter list" Height="28"
  HorizontalAlignment="Left" Name="Label1" VerticalAlignment="Top"/>
- <DataGrid Grid.Row="1" Name="GroupGrid" AutoGenerateColumns="False"
+ <DataGrid Grid.Row="1" Name="WaiterGrid" AutoGenerateColumns="False"
  IsReadOnly="True" Width="Auto">
  <DataGrid.Resources>
  <Style TargetType="DataGridCell">
@@ -32,17 +32,17 @@
  </DataGrid.Resources>
  <DataGrid.ContextMenu>
  <ContextMenu>
- <MenuItem Header="Add group" Click="MenuItemAddGroup_Click"/>
- <MenuItem Header="Edit group" Click="MenuItemEditGroup_Click"/>
- <MenuItem Header="Delete group" Click="MenuItemDeleteGroup_Click"/>
+ <MenuItem Header="Add waiter" Click="MenuItemAddWaiter_Click"/>
+ <MenuItem Header="Edit waiter" Click="MenuItemEditWaiter_Click"/>
+ <MenuItem Header="Delete waiter" Click="MenuItemDeleteWaiter_Click"/>
  </ContextMenu>
  </DataGrid.ContextMenu>
  <DataGrid.Columns>
  <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Width="50"/>
- <DataGridTextColumn Header="Group Name" Binding="{Binding
- Path=GroupName}" Width="100"/>
- <DataGridTextColumn Header="Curator Name" Binding="{Binding
- Path=CuratorName}" Width="100"/>
+ <DataGridTextColumn Header="First Name" Binding="{Binding
+ Path=FirstName}" Width="100"/>
+ <DataGridTextColumn Header="Last Name" Binding="{Binding
+ Path=LastName}" Width="100"/>
  <DataGridTextColumn Header="Headman Name" Binding="{Binding
  Path=HeadmanName}" Width="100"/>
  </DataGrid.Columns>
@@ -54,9 +54,9 @@
  <RowDefinition Height="auto"></RowDefinition>
  <RowDefinition></RowDefinition>
  </Grid.RowDefinitions>
- <Label Grid.Row="0" Content="Student list" Height="28"
+ <Label Grid.Row="0" Content="Order list" Height="28"
  HorizontalAlignment="Left" Name="Label2" VerticalAlignment="Top"/>
- <DataGrid Grid.Row="1" Name="StudentGrid" AutoGenerateColumns="False"
+ <DataGrid Grid.Row="1" Name="OrderGrid" AutoGenerateColumns="False"
  IsReadOnly="True" Width="Auto">
  <DataGrid.Resources>
  <Style TargetType="DataGridCell">
@@ -69,20 +69,20 @@
  </DataGrid.Resources>
  <DataGrid.ContextMenu>
  <ContextMenu>
- <MenuItem Header="Add student" Click="MenuItemAddStudent_Click"/>
- <MenuItem Header="Edit student" Click="MenuItemEditStudent_Click"/>
- <MenuItem Header="Delete student" Click="MenuItemDeleteStudent_Click"/>
+ <MenuItem Header="Add order" Click="MenuItemAddOrder_Click"/>
+ <MenuItem Header="Edit order" Click="MenuItemEditOrder_Click"/>
+ <MenuItem Header="Delete order" Click="MenuItemDeleteOrder_Click"/>
  </ContextMenu>
  </DataGrid.ContextMenu>
  <DataGrid.Columns>
  <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" Width="50"/>
- <DataGridTextColumn Header="First Name" Binding="{Binding
- Path=FirstName}" Width="100"/>
- <DataGridTextColumn Header="Last Name" Binding="{Binding Path=LastName}"
+ <DataGridTextColumn Header="Customer Name" Binding="{Binding
+ Path=CustomerName}" Width="100"/>
+ <DataGridTextColumn Header="Pizza Size" Binding="{Binding Path=PizzaSize}"
  Width="100"/>
- <DataGridTextColumn Header="Sex" Binding="{Binding Path=Sex}"
+ <DataGridTextColumn Header="Customer Sex" Binding="{Binding Path=CustomerSex}"
  Width="100"/>
- <DataGridTextColumn Header="Year" Binding="{Binding Path=Year}"
+ <DataGridTextColumn Header="Price" Binding="{Binding Path=Price}"
  Width="100"/>
  </DataGrid.Columns>
  </DataGrid>

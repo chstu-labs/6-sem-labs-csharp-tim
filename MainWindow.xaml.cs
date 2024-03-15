@@ -16,158 +16,172 @@ public partial class MainWindow : Window
         }
         return daoFactory;
     }
-    private GroupWindow groupWindow;
-    private StudentWindow studentWindow;
-    public GroupWindow getGroupWindow()
-    {
-        if (null == groupWindow)
-        {
-            groupWindow = new GroupWindow(this);
-        }
-        return groupWindow;
-    }
-    public StudentWindow getStudentWindow()
-    {
-        if (null == studentWindow)
-        {
-            studentWindow = new StudentWindow(this);
-        }
-        return studentWindow;
 
+    private WaiterWindow waiterWindow;
+    private OrderWindow orderWindow;
+
+    public WaiterWindow getWaiterWindow()
+    {
+        if (null == waiterWindow)
+        {
+            waiterWindow = new WaiterWindow(this);
+        }
+        return waiterWindow;
     }
+
+    public OrderWindow getOrderWindow()
+    {
+        if (null == orderWindow)
+        {
+            orderWindow = new OrderWindow(this);
+        }
+        return orderWindow;
+    }
+
+    
     public MainWindow()
     {
         this.Closing += new CancelEventHandler(MainWindow_Closing);
         InitializeComponent();
-        GroupGrid.ItemsSource = getDaoFactory().getGroupDAO().GetAll();
+        WaiterGrid.ItemsSource = getDaoFactory().getWaiterDAO().GetAll();
     }
-    //Обробник натиснення на контекстне меню додання групи
-    private void MenuItemAddGroup_Click(object sender, EventArgs e)
-    {
-        GroupWindow groupWindow = getGroupWindow();
-        groupWindow.AddButton.IsEnabled = true;
-        groupWindow.CancelButton.IsEnabled = true;
-        groupWindow.ShowDialog();
-    }
-    //Обробник натиснення на контекстне меню редагування групи
-    private void MenuItemEditGroup_Click(object sender, EventArgs e)
-    {
-        Group group = (Group)GroupGrid.SelectedItem;
-        if (null == group)
-        {
-            MessageBox.Show("Please select group", "Nothing to edit",
-            MessageBoxButton.OK, MessageBoxImage.Information,
-            MessageBoxResult.No);
-        }
-        else
-        {
-            GroupWindow groupWindow = getGroupWindow();
-            groupWindow.EditButton.IsEnabled = true;
-            groupWindow.CancelButton.IsEnabled = true;
-            groupWindow.Group = group;
-            groupWindow.InputTextBox1.Text = group.GroupName;
-            groupWindow.InputTextBox2.Text = group.CuratorName;
-            groupWindow.InputTextBox3.Text = group.HeadmanName;
-            groupWindow.ShowDialog();
-        }
-    }
-    //Обробник натиснення на контекстне меню видалення групи
-    private void MenuItemDeleteGroup_Click(object sender, EventArgs e)
-    {
-        Group group = (Group)GroupGrid.SelectedItem;
-        if (null == group)
-        {
-            MessageBox.Show("Please select group", "Nothing to delete",
-            MessageBoxButton.OK, MessageBoxImage.Information,
-            MessageBoxResult.No);
-        }
-        else
-        {
-            getDaoFactory().getGroupDAO().Delete(group);
-            GroupGrid.ItemsSource =
-            getDaoFactory().getGroupDAO().GetAll();
-        }
-    }
-    //Обробник натиснення на контекстне меню додання студента
-    private void MenuItemAddStudent_Click(object sender, EventArgs e)
-    {
-        Group group = (Group)GroupGrid.SelectedItem;
-        if (null == group)
-        {
-            MessageBox.Show("Please select group",
-            "Student must be added to group",
-            MessageBoxButton.OK, MessageBoxImage.Information,
 
+    //Обробник натиснення на контекстне меню додання офіціанта
+    private void MenuItemAddWaiter_Click(object sender, EventArgs e)
+    {
+        WaiterWindow waiterWindow = getWaiterWindow();
+        waiterWindow.AddButton.IsEnabled = true;
+        waiterWindow.CancelButton.IsEnabled = true;
+        waiterWindow.ShowDialog();
+    }
 
-            MessageBoxResult.No);
-        }
-        else
-        {
-            StudentWindow studentWindow = getStudentWindow();
-            studentWindow.AddButton.IsEnabled = true;
-            studentWindow.CancelButton.IsEnabled = true;
-            studentWindow.Group = group;
-            studentWindow.ShowDialog();
-        }
-    }
-    //Обробник натиснення на контекстне меню редагування студента
-    private void MenuItemEditStudent_Click(object sender, EventArgs e)
+    
+
+    //Обробник натиснення на контекстне меню редагування офіціанта
+    private void MenuItemEditWaiter_Click(object sender, EventArgs e)
     {
-        Group group = (Group)GroupGrid.SelectedItem;
-        Student student = (Student)StudentGrid.SelectedItem;
-        if (null == group)
+        Waiter waiter = (Waiter)WaiterGrid.SelectedItem;
+        if (null == waiter)
         {
-            MessageBox.Show("Please select student", "Nothing to edit",
+            MessageBox.Show("Please select waiter", "Nothing to edit",
             MessageBoxButton.OK, MessageBoxImage.Information,
             MessageBoxResult.No);
         }
         else
         {
-            StudentWindow studentWindow = getStudentWindow();
-            studentWindow.EditButton.IsEnabled = true;
-            studentWindow.CancelButton.IsEnabled = true;
-            studentWindow.Group = group;
-            studentWindow.Student = student;
-            studentWindow.InputTextBox1.Text = student.FirstName;
-            studentWindow.InputTextBox2.Text = student.LastName;
-            studentWindow.InputTextBox3.Text = student.Sex.ToString();
-            studentWindow.InputTextBox4.Text = student.Year.ToString();
-            studentWindow.ShowDialog();
+            WaiterWindow waiterWindow = getWaiterWindow();
+            waiterWindow.EditButton.IsEnabled = true;
+            waiterWindow.CancelButton.IsEnabled = true;
+            waiterWindow.Waiter = waiter;
+            waiterWindow.InputTextBox1.Text = waiter.FirstName;
+            waiterWindow.InputTextBox2.Text = waiter.LastName;
+            waiterWindow.InputTextBox3.Text = waiter.HeadmanName;
+            waiterWindow.ShowDialog();
         }
     }
-    //Обробник натиснення на контекстне меню видалення студента
-    private void MenuItemDeleteStudent_Click(object sender, EventArgs e)
+    //Обробник натиснення на контекстне меню видалення офіціанта
+    private void MenuItemDeleteWaiter_Click(object sender, EventArgs e)
     {
-        Student student = (Student)StudentGrid.SelectedItem;
-        if (null == student)
+        Waiter waiter = (Waiter)WaiterGrid.SelectedItem;
+        if (null == waiter)
         {
-            MessageBox.Show("Please select student", "Nothing to delete",
+            MessageBox.Show("Please select waiter", "Nothing to delete",
             MessageBoxButton.OK, MessageBoxImage.Information,
             MessageBoxResult.No);
         }
         else
         {
-            student = getDaoFactory().getStudentDAO()
-            .GetById(student.Id);
-            student.Group.StudentList.Remove(student);
-            getDaoFactory().getStudentDAO().Delete(student);
-            Group group = (Group)GroupGrid.SelectedItem;
-            IList<Student> studentList = getDaoFactory()
-            .getStudentDAO().getStudentsByGroup(group.Id);
-            StudentGrid.ItemsSource = studentList;
+            getDaoFactory().getWaiterDAO().Delete(waiter);
+            WaiterGrid.ItemsSource = getDaoFactory().getWaiterDAO().GetAll();
         }
     }
-    //Обробник натиснення на рядок в таблиці групи
+    
+    //Обробник натиснення на контекстне меню додання замовлення
+    private void MenuItemAddOrder_Click(object sender, EventArgs e)
+    {
+        Waiter waiter = (Waiter)WaiterGrid.SelectedItem;
+        if (null == waiter)
+        {
+            MessageBox.Show("Please select waiter",
+            "Order must be added to waiter",
+            MessageBoxButton.OK, MessageBoxImage.Information,
+            MessageBoxResult.No);
+        }
+        else
+        {
+            OrderWindow orderWindow = getOrderWindow();
+            orderWindow.AddButton.IsEnabled = true;
+            orderWindow.CancelButton.IsEnabled = true;
+            orderWindow.Waiter = waiter;
+            orderWindow.ShowDialog();
+        }
+    }
+    //Обробник натиснення на контекстне меню редагування замовлення
+    private void MenuItemEditOrder_Click(object sender, EventArgs e)
+    {
+        Waiter waiter = (Waiter)WaiterGrid.SelectedItem;
+        Order order = (Order)OrderGrid.SelectedItem;
+        if (null == waiter)
+        {
+            MessageBox.Show("Please select waiter",
+            "Order must be added to waiter",
+            MessageBoxButton.OK, MessageBoxImage.Information,
+            MessageBoxResult.No);
+        }
+        else if (null == order)
+        {
+            MessageBox.Show("Please select order", "Nothing to edit",
+            MessageBoxButton.OK, MessageBoxImage.Information,
+            MessageBoxResult.No);
+        }
+        else
+        {
+            OrderWindow orderWindow = getOrderWindow();
+            orderWindow.EditButton.IsEnabled = true;
+            orderWindow.CancelButton.IsEnabled = true;
+            orderWindow.Waiter = waiter;
+            orderWindow.Order = order;
+            orderWindow.InputTextBox1.Text = order.CustomerName;
+            orderWindow.InputTextBox2.Text = order.PizzaSize;
+            orderWindow.InputTextBox3.Text = order.CustomerSex;
+            orderWindow.InputTextBox4.Text = order.Price.ToString();
+            orderWindow.ShowDialog();
+        }
+    }
+    //Обробник натиснення на контекстне меню видалення замовлення
+    private void MenuItemDeleteOrder_Click(object sender, EventArgs e)
+    {
+        Order order = (Order)OrderGrid.SelectedItem;
+        if (null == order)
+        {
+            MessageBox.Show("Please select order", "Nothing to delete",
+            MessageBoxButton.OK, MessageBoxImage.Information,
+            MessageBoxResult.No);
+        }
+        else
+        {
+            Waiter waiter = (Waiter)WaiterGrid.SelectedItem;
+            order = getDaoFactory().getOrderDAO().GetById(order.Id);
+            waiter.OrderList.Remove(order);
+            getDaoFactory().getOrderDAO().Delete(order);
+            IList<Order> orderList = getDaoFactory().getOrderDAO()
+            .getOrdersByWaiter(waiter.Id);
+            OrderGrid.ItemsSource = orderList;
+        }
+    }
+    
+    //Обробник натиснення на рядок в таблиці офіціантів
     private void DataGrid_Click(object sender, RoutedEventArgs e)
     {
-
-        Group group = (Group)GroupGrid.SelectedItem;
-        if (null != group)
+        Waiter waiter = (Waiter)WaiterGrid.SelectedItem;
+        if (null != waiter)
         {
-            group = getDaoFactory().getGroupDAO().GetById(group.Id);
-            StudentGrid.ItemsSource = group.StudentList;
+            waiter = getDaoFactory().getWaiterDAO().GetById(waiter.Id);
+            OrderGrid.ItemsSource = waiter.OrderList;
         }
     }
+
+
     //Обробник закриття головного вікна
     void MainWindow_Closing(object sender, CancelEventArgs e)
     {
