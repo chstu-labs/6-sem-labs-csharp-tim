@@ -43,6 +43,10 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "fluentnhibernate": {
+              "target": "Package",
+              "version": "[3.3.0, )"
+            },
             "npgsql": {
               "target": "Package",
               "version": "[8.0.2, )"

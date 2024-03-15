@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="fluentnhibernate" Version="3.3.0" />
     <PackageReference Include="npgsql" Version="8.0.2" />
   </ItemGroup>
 
