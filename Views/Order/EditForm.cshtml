@@ -1,0 +1,46 @@
+@using Lab4
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Order
+@{
+    Layout = "Layout";
+    ViewData["Title"] = "Edit Order";
+}
+<h1>Edit Order</h1>
+<form action="/Order/Edit" method="post">
+    <input asp-for="Id" type="hidden" />
+    <div>
+        <label asp-for="CustomerName"></label>
+    </div>
+    77
+    <div>
+        <input asp-for="CustomerName" type="text" />
+    </div>
+    <div>
+        <label asp-for="PizzaSize"></label>
+    </div>
+    <div>
+        <input asp-for="PizzaSize" type="text" />
+    </div>
+    <div>
+        <label asp-for="CustomerSex"></label>
+    </div>
+    <div>
+        <select asp-for="CustomerSex">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div>
+        <label asp-for="Price"></label>
+    </div>
+    <div>
+        <input asp-for="Price" type="number" min="1" max="200" />
+    </div>
+    <div>
+        <input name="Edit" type="submit" value="Edit order" />
+    </div>
+    <div>
+        <a asp-controller="Order" asp-action="GetAll">Back to order list</a>
+    </div>
+</form>
