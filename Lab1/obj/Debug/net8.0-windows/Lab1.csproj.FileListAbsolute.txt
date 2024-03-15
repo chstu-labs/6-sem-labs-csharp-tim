@@ -65,7 +65,6 @@ D:\Studying\6-sem\C#\lab1\Lab6\Lab1\obj\Debug\net8.0-windows\Lab1.GeneratedMSBui
 D:\Studying\6-sem\C#\lab1\Lab6\Lab1\obj\Debug\net8.0-windows\Lab1.AssemblyInfoInputs.cache
 D:\Studying\6-sem\C#\lab1\Lab6\Lab1\obj\Debug\net8.0-windows\Lab1.AssemblyInfo.cs
 D:\Studying\6-sem\C#\lab1\Lab6\Lab1\obj\Debug\net8.0-windows\Lab1.csproj.CoreCompileInputs.cache
-D:\Studying\6-sem\C#\lab1\Lab6\Lab1\obj\Debug\net8.0-windows\Lab1.sourcelink.json
 D:\Studying\6-sem\C#\lab1\Lab6\Lab1\obj\Debug\net8.0-windows\Lab1.csproj.Up2Date
 D:\Studying\6-sem\C#\lab1\Lab6\Lab1\obj\Debug\net8.0-windows\Lab1.dll
 D:\Studying\6-sem\C#\lab1\Lab6\Lab1\obj\Debug\net8.0-windows\refint\Lab1.dll
