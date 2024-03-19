@@ -8,7 +8,7 @@ public class OrderController : Controller
     public IActionResult GetAll()
     {
         List<Order> orderList = NHibernateDAOFactory
-        .getInstance().getOrderDAO().GetAll();
+            .getInstance().getOrderDAO().GetTop10().ToList();
         return View(orderList);
     }
     //Обробник додання студента
