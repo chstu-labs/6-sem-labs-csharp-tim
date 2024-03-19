@@ -124,3 +124,4 @@ D:\Studying\6-sem\C#\lab1\Lab6\orm.test\obj\Debug\net8.0-windows\refint\orm.test
 D:\Studying\6-sem\C#\lab1\Lab6\orm.test\obj\Debug\net8.0-windows\orm.test.pdb
 D:\Studying\6-sem\C#\lab1\Lab6\orm.test\obj\Debug\net8.0-windows\orm.test.genruntimeconfig.cache
 D:\Studying\6-sem\C#\lab1\Lab6\orm.test\obj\Debug\net8.0-windows\ref\orm.test.dll
+D:\Studying\6-sem\C#\lab1\Lab6\orm.test\obj\Debug\net8.0-windows\orm.test.sourcelink.json

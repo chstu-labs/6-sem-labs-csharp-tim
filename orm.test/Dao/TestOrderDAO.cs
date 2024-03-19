@@ -79,6 +79,18 @@ namespace orm.test.Dao
         {
             base.TestDeleteGeneric();
         }
+        [TestMethod]
+        public void TestGetTop10OrdersByPrice()
+        {
+            IOrderDAO orderDAO = NHibernateDAOFactory.getInstance().getOrderDAO();
+            var expectedMaxCount = 10;
+            var result = orderDAO.GetTop10OrdersByPrice();
+            Assert.IsTrue(result.Count <= expectedMaxCount, "Count must be less than or equal to 10");
+            for (int i = 0; i < result.Count - 1; i++)
+            {
+                Assert.IsTrue(result[i].Price >= result[i + 1].Price, "Orders must be sorted by price in descending order");
+            }
+        }
     }
 
 }

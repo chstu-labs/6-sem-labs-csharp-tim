@@ -16,4 +16,12 @@ public class OrderDAO : GenericDAO<Order>, IOrderDAO
         .List<Order>();
         return list;
     }
+    public List<Order> GetTop10OrdersByPrice()
+    {
+        var result = session.Query<Order>()
+                            .OrderByDescending(o => o.Price)
+                            .Take(10)
+                            .ToList();
+        return result;
+    }
 }
