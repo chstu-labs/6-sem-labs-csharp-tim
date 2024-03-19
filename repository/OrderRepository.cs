@@ -86,6 +86,15 @@ namespace Lab1
 
         public void Save(Order order)
         {
+            if (string.IsNullOrEmpty(order.CustomerName))
+            {
+                throw new ArgumentException("CustomerName cannot be null or empty.");
+            }
+            if (order.CustomerName.Length > 50)
+            {
+                throw new ArgumentException("CustomerName cannot be longer than 50 characters.");
+            }
+
             DbCommand command = NpgsqlFactory.Instance.CreateCommand();
             command.Connection = GetConnection();
             command.CommandText = "INSERT INTO orders(customername, pizzasize, customersex, price) VALUES(@customername, @pizzasize, @customersex, @price)";
