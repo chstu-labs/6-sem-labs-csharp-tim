@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NHibernate;
+using NHibernate.Criterion;
 
 namespace Lab1;
 

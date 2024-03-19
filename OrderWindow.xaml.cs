@@ -39,6 +39,7 @@ public partial class OrderWindow : Window
         getParentWindow().OrderGrid.ItemsSource = orderList;
         closeWindow();
     }
+
     //Обробник натиснення на кнопку редагування замовлення
     private void ButtonEdit_Click(object sender, EventArgs e)
     {

@@ -38,7 +38,7 @@ public partial class MainWindow : Window
         return orderWindow;
     }
 
-    
+
     public MainWindow()
     {
         this.Closing += new CancelEventHandler(MainWindow_Closing);
@@ -54,8 +54,6 @@ public partial class MainWindow : Window
         waiterWindow.CancelButton.IsEnabled = true;
         waiterWindow.ShowDialog();
     }
-
-    
 
     //Обробник натиснення на контекстне меню редагування офіціанта
     private void MenuItemEditWaiter_Click(object sender, EventArgs e)
@@ -95,7 +93,7 @@ public partial class MainWindow : Window
             WaiterGrid.ItemsSource = getDaoFactory().getWaiterDAO().GetAll();
         }
     }
-    
+
     //Обробник натиснення на контекстне меню додання замовлення
     private void MenuItemAddOrder_Click(object sender, EventArgs e)
     {
@@ -169,7 +167,18 @@ public partial class MainWindow : Window
             OrderGrid.ItemsSource = orderList;
         }
     }
-    
+
+    private void ButtonSearch_Click(object sender, RoutedEventArgs e)
+    {
+        string headmanName = SearchTextBox.Text;
+        IList<Waiter> waiters = getDaoFactory().getWaiterDAO().GetWaitersByHeadmanName(headmanName);
+        WaiterGrid.ItemsSource = waiters;
+        if (waiters.Count > 0)
+        {
+            WaiterGrid.SelectedItem = waiters[0];
+        }
+    }
+
     //Обробник натиснення на рядок в таблиці офіціантів
     private void DataGrid_Click(object sender, RoutedEventArgs e)
     {
