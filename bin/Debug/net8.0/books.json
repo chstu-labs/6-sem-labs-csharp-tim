@@ -1,0 +1,16 @@
+[
+  {
+    "Title": "The Witcher",
+    "Author": "Anjei",
+    "Year": 1996,
+    "Genre": "Fantasy",
+    "ISBN": "0983"
+  },
+  {
+    "Title": "Test",
+    "Author": "test",
+    "Year": 1998,
+    "Genre": "test",
+    "ISBN": "0911"
+  }
+]

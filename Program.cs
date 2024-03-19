@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System;
+using System.Text.Json;
+using System.IO;
+
 namespace Lab1
 {
     class Program
@@ -24,11 +27,14 @@ namespace Lab1
                     case "list":
                         ListBooks();
                         break;
+                    case "save":
+                        SaveBooks();
+                        break;
                     case "exit":
                         Console.WriteLine("Exiting the program.");
                         return;
                     default:
-                        Console.WriteLine("Invalid command. Please enter 'add', 'remove', 'list', or 'exit'.");
+                        Console.WriteLine("Invalid command. Please enter 'add', 'remove', 'list', 'save' or 'exit'.");
                         break;
                 }
             }
@@ -77,6 +83,14 @@ namespace Lab1
             {
                 Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, Year: {book.Year}, Genre: {book.Genre}, ISBN: {book.ISBN}");
             }
+        }
+
+        static void SaveBooks()
+        {
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            string jsonString = JsonSerializer.Serialize(bookCollection, options);
+            File.WriteAllText("books.json", jsonString);
+            Console.WriteLine("Books saved successfully.");
         }
     }
 }
