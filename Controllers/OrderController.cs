@@ -1,3 +1,4 @@
+using System.Xml.Serialization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Lab4;
@@ -16,6 +17,16 @@ public class OrderController : ControllerBase
         .getInstance().getOrderDAO().GetAll();
         return orders;
     }
+    [HttpGet("search")]
+    [Produces("application/xml")]
+    public IActionResult SearchByCustomerName([FromQuery] string customerName)
+    {
+        var orders = NHibernateDAOFactory.getInstance().getOrderDAO().SearchByCustomerName(customerName);
+        var serializer = new XmlSerializer(typeof(List<Order>));
+        using var stringWriter = new StringWriter();
+        serializer.Serialize(stringWriter, orders);
+        return Content(stringWriter.ToString(), "application/xml");
+    }
     //Сервіс для додавання нового студента
     [HttpPost]
     [Consumes("application/json")]
@@ -27,6 +38,7 @@ public class OrderController : ControllerBase
         return resultOrder;
     }
     //Сервіс для редагування студента
+
     [HttpPut]
     [Consumes("application/json")]
     [Produces("application/json")]
